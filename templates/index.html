@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block body_block %}
+<div class="container">
+  <div class="jumbotron">
+    <h1>Welcome to the myweb !</h1>
+    {% if user.is_authenticated %}
+        <h2>Hello {{ user.username }}</h2>
+    {% else %}
+        <h2>Register or Login if you'd like to</h2>
+        <h1>Post your thought</h1>
+    {% endif %}
+  </div>
+</div>
+{% for post in Post %}
+<div>
+	<p style="border: 1px solid blue;">
+		<h3>{{post.post_title}}</h3>
+		<p>{{post.date_published}}</p>
+		<p style="border: 1px solid black;margin: 25px 50px;background-color: lightblue;">
+			{{post.post_content}}
+		</p>
+		<p>posted By {{post.user_name}}</p>
+		<p>
+			visit profile
+			<a href="#">{{post.user_profile_link}}</a>
+		</p>
+	</p>
+</div>
+{% endfor %}
+{% endblock %}
